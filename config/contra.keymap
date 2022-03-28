@@ -8,6 +8,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/ext_power.h>
+
 
 #define DEFAULT 0
 #define RAISE 1
@@ -66,8 +68,8 @@
             bindings = <
     &bt BT_CLR   &none        &none        &none        &none        &none       &none    &rgb_ug RGB_BRI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_EFF  &rgb_ug RGB_TOG
     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none       &none    &none           &none           &none           &none            &none
-    &none        &none        &none        &none        &none        &none       &none    &none           &none           &none           &none            &none
-    &reset       &bootloader  &none        &none        &none        &none       &none    &none           &none           &none           &none            &none
+    &none        &none        &none        &none        &none        &none       &none    &none           &none           &none           &none            &ext_power EP_ON
+    &reset       &bootloader  &none        &none        &none        &none       &none    &none           &none           &none           &none            &ext_power EP_OFF
             >;
         };
     };
