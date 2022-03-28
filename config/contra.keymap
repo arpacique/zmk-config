@@ -49,10 +49,10 @@
 
         numpad {
             bindings = <
-    &trans     &trans       &trans       &kp UP       &trans    &trans    &trans    &kp N7    &kp N8     &kp N9   &FSLH    &trans
-    &trans     &trans       &kp LEFT     &kp DOWN     &kp RIGHT &trans    &trans    &kp N4    &kp N5     &kp N6   &ASTRK   &EQUAL
-    &trans     &trans       &trans       &trans       &trans    &trans    &trans    &kp N1    &kp N2     &kp N3   &MINUS   &trans
-    &trans     &trans       &trans       &trans       &trans    &trans    &trans    &kp N0    &kp N0     &kp DOT  &kp PLUS &ENTER
+    &trans     &trans       &trans       &kp UP       &trans    &trans    &trans    &kp N7    &kp N8     &kp N9   &kp FSLH    &trans
+    &trans     &trans       &kp LEFT     &kp DOWN     &kp RIGHT &trans    &trans    &kp N4    &kp N5     &kp N6   &kp ASTRK   &kp EQUAL
+    &trans     &trans       &trans       &trans       &trans    &trans    &trans    &kp N1    &kp N2     &kp N3   &kp MINUS   &kp trans
+    &trans     &trans       &trans       &trans       &trans    &trans    &trans    &kp N0    &kp N0     &kp DOT  &kp PLUS    &kp ENTER
             >;
         };
 
