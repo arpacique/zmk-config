@@ -9,8 +9,10 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define DEFAULT  0
-#define NUM_MODS 1
-#define BT_CTRL  2
+#define RAISE 1
+#define LOWER 2
+#define NUMPAD 3
+#define BT_CTRL  4
 
 / {
     keymap {
@@ -18,28 +20,48 @@
 
         default_layer {
             bindings = <
-    &kp ESC   &kp Q     &kp W    &kp E     &kp R       &kp T      &kp Y     &kp U        &kp I     &kp O     &kp P    &kp BSPC
-    &kp TAB   &kp A     &kp S    &kp D     &kp F       &kp G      &kp H     &kp J        &kp K     &kp L     &kp SEMI &kp SQT
-    &kp LSHFT &kp Z     &kp X    &kp C     &kp V       &kp B      &kp N     &kp M        &kp COMMA &kp DOT   &kp FSLH &kp ENTER
-    &kp LCTRL &kp LGUI  &kp LALT &kp BSLH  &to DEFAULT &kp SPACE  &trans    &to NUM_MODS &kp LEFT  &kp RIGHT &kp UP   &kp DOWN
+    
+    &kp TAB   &kp Q      &kp W      &kp E       &kp R       &kp T             &kp Y     &kp U        &kp I      &kp O       &kp P         &kp BSPC
+    &kp ESC   &mt LGUI A &mt LALT S &mt LSHFT D &mt LCTRL F &kp G             &kp H     &mt LCTRL J  &mt LALT K &mt LSHFT L &mt LGUI SEMI &kp SQT
+    &kp LSHFT &kp Z      &kp X      &kp C       &kp V       &kp B             &kp N     &kp M        &kp COMMA  &kp DOT     &kp FSLH      &mt RSHFT ENTER
+    &kp LCTRL &kp LGUI   &kp LALT   &kp BSLH    &mo LOWER   &lt NUMPAD SPACE  &trans    &mo RAISE    &kp LEFT   &kp UP      &kp DOWN      &kp RIGHT
             >;
         };
 
-        num_mods {
+        raise {
             bindings = <
-    &kp GRAVE &kp N1    &kp N2   &kp N3   &kp N4      &kp N5     &kp N6    &kp N7      &kp N8    &kp N9    &kp N0   &kp DEL
-    &kp TAB   &kp F1    &kp F2   &kp F3   &kp F4      &kp F5     &kp F6    &kp MINUS   &kp PG_UP &kp LBKT  &kp RBKT &kp BSLH
-    &kp LSHFT &kp F7    &kp F8   &kp F9   &kp F10     &kp F11    &kp F12   &kp EQUAL   &kp PG_DN &kp HOME  &kp END  &kp ENTER
-    &kp LCTRL &kp LGUI  &kp LALT &reset   &to DEFAULT &kp SPACE  &trans    &mo BT_CTRL &kp LEFT  &kp RIGHT &kp UP   &kp DOWN
+    &kp GRAVE &kp EXCL &kp AT   &kp HASH &kp DLLR    &kp PRCNT  &kp N6    &kp N7      &kp N8     &kp N9       &kp N0       &kp DEL
+    &trans    &kp F1   &kp F2   &kp F3   &kp F4      &kp F5     &kp F6    &kp MINUS   &kp EQUAL  &kp LBKT     &kp RBKT     &kp BSLH
+    &kp CAPS  &kp F7   &kp F8   &kp F9   &kp F10     &kp F11    &kp F12   &kp LT      &kp GT     &kp PG_UP    &kp PG_DN    &kp ENTER
+    &trans    &trans   &trans   &trans   &mo BT_CTRL &kp SPACE  &trans    &mo BT_CTRL &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_PP
             >;
         };
+
+        lower {
+            bindings = <
+    &kp TILDE  &trans   &trans   &trans   &trans      &trans     &kp CARET &kp AMPS  &kp ASTRK  &kp LPAR     &kp RPAR     &kp DEL
+    &trans     &kp F1   &kp F2   &kp F3   &kp F4      &kp F5     &kp F6    &kp UNDER &kp PLUS   &kp LBRC     &kp RBRC     &kp PIPE
+    &kp CAPS   &kp F7   &kp F8   &kp F9   &kp F10     &kp F11    &kp F12   &trans    &trans     &kp HOME     &kp END      &trans
+    &trans     &trans   &trans   &trans   &trans      &trans     &trans    &trans    &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_PP
+            >;
+        };
+
+        numpad {
+            bindings = <
+    &trans     &trans       &trans       &kp UP       &trans    &trans    &trans    &kp N7    &kp N8     &kp N9   &FSLH    &trans
+    &trans     &trans       &kp LEFT     &kp DOWN     &kp RIGHT &trans    &trans    &kp N4    &kp N5     &kp N6   &ASTRK   &EQUAL
+    &trans     &trans       &trans       &trans       &trans    &trans    &trans    &kp N1    &kp N2     &kp N3   &MINUS   &trans
+    &trans     &trans       &trans       &trans       &trans    &trans    &trans    &kp N0    &kp N0     &kp DOT  &kp PLUS &ENTER
+            >;
+        };
+
 
         bt_control {
             bindings = <
-    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans    &trans    &trans     &trans     &trans   &trans
-    &trans     &trans       &trans       &trans       &trans       &trans       &trans    &trans    &trans     &trans     &trans   &trans
-    &trans     &trans       &trans       &trans       &trans       &trans       &trans    &trans    &trans     &trans     &trans   &trans
-    &trans     &trans       &trans       &trans       &trans       &trans       &trans    &trans    &bt BT_PRV &bt BT_NXT &trans   &trans
+    &bt BT_CLR   &none       &none        &none         &none        &none       &none    &rgb_ug RGB_BRI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_EFF  &rgb_ug RGB_TOG
+    &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none       &none    &none           &none           &none           &none            &none
+    &none        &none        &none        &none        &none        &none       &none    &none           &none           &none           &none            &none
+    &reset       &bootloader  &none        &none        &none        &none       &none    &none           &none           &none           &none            &none
             >;
         };
     };
